@@ -2,7 +2,8 @@ name: issues output
 
 on:
   issues:
-    types: opened
+    types:
+      - opened
 
 
 jobs:
