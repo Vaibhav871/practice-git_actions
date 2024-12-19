@@ -10,4 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: github context
-        run: echo ${{toJson(github)}}
+        run: |
+          echo "${{toJson(github.repository_owner)}}"
+          echo "issue number:- ${{toJson(github.event.issue.number)}}"
+          echo "issue url:- ${{toJson(github.event.issue.url)}}"
+
+
