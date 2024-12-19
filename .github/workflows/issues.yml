@@ -1,0 +1,13 @@
+name: issues output
+
+on:
+  issues:
+    types: opened
+
+
+jobs:
+  issues:
+    runs-on: ubuntu-server
+    steps:
+      - name: github context
+        run: echo ${{toJson(github)}}

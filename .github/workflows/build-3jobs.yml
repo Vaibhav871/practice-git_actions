@@ -53,6 +53,7 @@ jobs:
 
 
   testing:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: checkout
