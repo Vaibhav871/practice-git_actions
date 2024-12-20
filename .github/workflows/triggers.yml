@@ -1,0 +1,37 @@
+name: build-test-lint
+
+on: ........
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: node-setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: install dependancies
+        run: |
+          npm ci
+          echo "dependancies installed .........."
+
+
+      - name: linting code
+        run: |
+          npm run lint
+          echo "linting code compeated ......."
+
+      - name: build code
+        run: |
+          npm run build
+          echo "build code is complated ......"
+
+      - name: test code
+        run: |
+          npm run test
+          echo "code testing completed ...."
+
