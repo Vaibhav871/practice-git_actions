@@ -4,12 +4,10 @@ on:
     branches:
       - main
 jobs:
-
   
   test:
     runs-on: ubuntu-latest
-    environment:
-      name: development
+   
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -22,8 +20,7 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
-    environment:
-      name: development
+   
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -45,13 +42,11 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
-
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: development
+    environment: development
+    
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
