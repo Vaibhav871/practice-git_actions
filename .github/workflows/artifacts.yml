@@ -33,6 +33,13 @@ jobs:
           name: my-artifact
           path: dist
 
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+
+
 
   deploy:
     needs: build
@@ -46,3 +53,9 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
